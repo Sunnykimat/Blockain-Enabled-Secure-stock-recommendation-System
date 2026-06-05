@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ── */
+:root {
+  --obsidian-950: #03050a;
+  --obsidian-900: #060c14;
+  --obsidian-800: #0a1428;
+  --obsidian-700: #0f1e3d;
+  --cyan-neon: #00ffd1;
+  --cyan-bright: #00e5b8;
+  --gold-bright: #ffd166;
+  --danger: #ff4560;
+  --success: #00ff94;
+  --warning: #ffb020;
+}
+
+/* ── Base ── */
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--obsidian-950);
+  color: #e2e8f0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #060c14; }
+::-webkit-scrollbar-thumb { background: #00c9a0; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #00ffd1; }
+
+/* ── Glass card base ── */
+.glass {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.glass-cyan {
+  background: linear-gradient(135deg, rgba(0,255,209,0.08) 0%, rgba(0,255,209,0.03) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,255,209,0.2);
+}
+
+/* ── Neon text glow ── */
+.text-glow-cyan { text-shadow: 0 0 20px rgba(0,255,209,0.6), 0 0 40px rgba(0,255,209,0.3); }
+.text-glow-gold { text-shadow: 0 0 20px rgba(255,209,102,0.6); }
+
+/* ── Gradient text ── */
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #00ffd1, #00c9a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-gold {
+  background: linear-gradient(135deg, #ffd166, #f0b429);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Input styles ── */
+.input-dark {
+  background: rgba(6,12,20,0.8);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #e2e8f0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-dark:focus {
+  outline: none;
+  border-color: rgba(0,255,209,0.5);
+  box-shadow: 0 0 0 2px rgba(0,255,209,0.1);
+}
+.input-dark::placeholder { color: rgba(255,255,255,0.3); }
+
+/* ── Button styles ── */
+.btn-primary {
+  background: linear-gradient(135deg, #00ffd1, #00c9a0);
+  color: #03050a;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(0,255,209,0.4), 0 0 40px rgba(0,255,209,0.2);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  transition: all 0.2s;
+}
+.btn-ghost:hover {
+  border-color: rgba(0,255,209,0.4);
+  color: #00ffd1;
+  background: rgba(0,255,209,0.05);
+}
+
+/* ── Sidebar active state ── */
+.nav-item-active {
+  background: rgba(0,255,209,0.1);
+  border-left: 2px solid #00ffd1;
+  color: #00ffd1;
+}
+
+/* ── Table row hover ── */
+.table-row-hover:hover {
+  background: rgba(0,255,209,0.04);
+}
+
+/* ── Recommendation badges ── */
+.badge-buy  { background: rgba(0,255,148,0.15); color: #00ff94; border: 1px solid rgba(0,255,148,0.3); }
+.badge-sell { background: rgba(255,69,96,0.15);  color: #ff4560; border: 1px solid rgba(255,69,96,0.3); }
+.badge-hold { background: rgba(255,176,32,0.15); color: #ffb020; border: 1px solid rgba(255,176,32,0.3); }
+
+/* ── Risk badges ── */
+.risk-low    { color: #00ff94; }
+.risk-medium { color: #ffb020; }
+.risk-high   { color: #ff4560; }
+
+/* ── Verified badge ── */
+.badge-verified   { background: rgba(0,255,209,0.1); color: #00ffd1; border: 1px solid rgba(0,255,209,0.3); }
+.badge-pending    { background: rgba(255,176,32,0.1); color: #ffb020; border: 1px solid rgba(255,176,32,0.3); }
+.badge-failed     { background: rgba(255,69,96,0.1); color: #ff4560; border: 1px solid rgba(255,69,96,0.3); }
+
+/* ── Animated border ── */
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(0,255,209,0.2); }
+  50%       { border-color: rgba(0,255,209,0.6); }
+}
+.border-glow-anim { animation: border-glow 2s ease-in-out infinite; }
+
+/* ── Recharts overrides for dark theme ── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255,255,255,0.06);
+}
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #0a1428 !important;
+  border: 1px solid rgba(0,255,209,0.3) !important;
+  border-radius: 8px !important;
+}
